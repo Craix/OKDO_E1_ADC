@@ -33,6 +33,7 @@ void ADC0_IRQHANDLER(void)
 
 	LPADC_GetConvResult(ADC0, &g_LpadcResultConfigStruct, 0U);
 	adcCh2=g_LpadcResultConfigStruct.convValue;
+
 }
 
 void PowerControl(float X, float Y)
@@ -69,6 +70,8 @@ int main(void)
 	{
 		Xval = (adcCh1/32768.0)-1;
 		Yval = (adcCh2/32768.0)-1;
+
+		PRINTF("%.2f, %.2f \r\n", Xval, Yval);
 
 		Xval = ((int)(Xval *100))/100.0;
 		Yval = ((int)(Yval *100))/100.0;
